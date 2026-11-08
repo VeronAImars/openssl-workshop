@@ -18,19 +18,19 @@ updated: 2026-11-07
 updated_by: veronaimars
 phases:
   - id: M0
-    title: Walking skeleton — one lesson, two versions, graded in CI, published, the old link redirected
+    title: Walking skeleton — one lesson, two versions, graded in CI, published, the old link redirected (design §7)
     status: todo
     depends_on: []
     subphases:
       - id: M0.0
-        title: Spike — run one lesson through the core's check runner by hand
+        title: Spike — run one lesson through the core's check runner by hand (design §3, §5.1)
         status: todo
         deliverables:
           - id: M0.0-d1
             done: false
             desc: docs/findings-m0.md records the lesson-to-check mapping, what the core API must expose, and the page shape
       - id: M0.1
-        title: One lesson, graded
+        title: One lesson, graded (design §2, §5.1)
         status: todo
         deliverables:
           - id: M0.1-d1
@@ -45,7 +45,7 @@ phases:
             check: fresh clone → `workshop lesson check lessons/pki-basics/03-chain --version 3.5 --version 4.1` exits 0 → remove the -untrusted step → exits non-zero naming the failed check and the cited section
             method: e2e
       - id: M0.2
-        title: Published
+        title: Published (design §3, §5.2)
         status: todo
         deliverables:
           - id: M0.2-d1
@@ -67,17 +67,24 @@ phases:
     depends_on: [M0]
     subphases:
       - id: M1.1
-        title: Key, request, chain, verify, revocation, with current commands
+        title: Key, request, chain, verify, revocation, with current commands (design §4 pki-basics)
         status: todo
         deliverables:
           - id: M1.1-d1
             done: false
             desc: five lessons use genpkey, an algorithm-agnostic key match, and a chain check that fails when the intermediate is missing; all pass on 3.5 and 4.1
       - id: M1.2
-        title: gate
+        title: The your-stack module (design §4)
         status: todo
         deliverables:
           - id: M1.2-d1
+            done: false
+            desc: three lessons read the learner's own host probe from the core: which openssl is on PATH and what it is, what their Python, Node and curl link, what OPENSSL_CONF would change; the checks grade the probe output so the lesson is true on every machine
+      - id: M1.3
+        title: gate
+        status: todo
+        deliverables:
+          - id: M1.3-d1
             done: false
             desc: hack/acceptance/m1.sh replaces the skeleton
   - id: M2
@@ -86,7 +93,7 @@ phases:
     depends_on: [M1]
     subphases:
       - id: M2.1
-        title: Re-run the lessons that cite a changed section
+        title: Re-run the lessons that cite a changed section (design §3 drift)
         status: todo
         deliverables:
           - id: M2.1-d1
@@ -105,7 +112,7 @@ phases:
     depends_on: [M2]
     subphases:
       - id: M3.1
-        title: Draft a lesson from a manual section
+        title: Draft a lesson from a manual section (design §3 generator)
         status: todo
         deliverables:
           - id: M3.1-d1
@@ -124,7 +131,8 @@ phases:
 
 - **M0** proves the whole loop once: one lesson graded on two releases by the core's checks, a page
   people can open, the old link pointed at it.
-- **M1** rebuilds the earlier module's path with commands that are right today.
+- **M1** rebuilds the earlier module's path with commands that are right today, then teaches the stack
+  the learner actually has.
 - **M2** is the reason the project exists: when OpenSSL changes a page, the lessons that cite it
   are re-tested that night.
 - **M3** lets the manuals write the first draft of a lesson; a person still confirms.

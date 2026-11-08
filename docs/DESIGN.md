@@ -56,7 +56,11 @@ workshop ask / shell completion ──▶ core index for the release `openssl ve
 | Drift | take the core's changed-section list; find citing lessons; re-run; open issues | `internal/drift/`, `.github/workflows/nightly.yml` |
 | Tutor | release-aware completion for `openssl` itself; `ask` answering from the index with the section | `internal/tutor/` |
 
-## 4. Modules and the industry gap
+## 4. Platform realities and the modules that teach them
+
+The workshop grades in the core's pinned images, so a lesson's result never depends on the learner's
+machine (core design §2). The learner's machine is still the point: core design §4 measured five TLS stacks
+on one Mac, and that gap between what is taught and what runs is what the second module teaches from.
 
 Lessons are grouped in modules. The first two:
 
