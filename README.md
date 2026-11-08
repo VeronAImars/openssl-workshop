@@ -19,6 +19,37 @@ on OpenSSL's own documentation, at the OpenSSL project's encouragement.
 Lessons are files anyone can read and propose changes to. The model drafts and explains; the
 checks grade; a person confirms.
 
+## A look (mockup of the M0 target)
+
+```text
+$ workshop lesson run pki-basics/03-chain --version 4.1
+OpenSSL 4.1.0 (pinned image)          PKI basics · lesson 3 of 5 · the chain
+
+  Goal   Verify leaf.pem against root.pem, supplying the intermediate.
+  Files  root.pem  int.pem  leaf.pem
+  Read   openssl-verify(1) OPTIONS: -CAfile, -untrusted
+
+sandbox$ openssl verify -CAfile root.pem leaf.pem
+CN = leaf
+error 20 at 0 depth lookup: unable to get local issuer certificate
+error leaf.pem: verification failed
+
+  ✘ Not yet. The verifier found leaf.pem but nothing that signed it;
+    root.pem signed int.pem, not leaf.pem.
+    openssl-verify(1) OPTIONS -untrusted: "A file of untrusted certificates …
+    used to build the chain".
+
+sandbox$ openssl verify -CAfile root.pem -untrusted int.pem leaf.pem
+leaf.pem: OK
+
+  ✔ check 1  the chain verifies with the intermediate supplied
+  ✔ check 2  it fails without the intermediate (run for you)
+  Lesson 3 passed on 4.1.0. Also passes on 3.5.9. Cited: openssl-verify(1) OPTIONS.
+```
+
+The grader read the files you made and ran the real `openssl` on them. The explanation quotes the manual
+for the release you chose.
+
 ## Why
 
 The earlier public teaching module taught an end-of-life release, a chain check that passed with
