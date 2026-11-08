@@ -11,7 +11,7 @@ it and publishes it.
 ## v0.1 — the first lesson, graded and published
 
 - M0 walking skeleton: one lesson graded on two releases in CI, its page on the static site, the
-  earlier public module link redirected there
+  retired module's repository pointing at it
 - M1 the PKI basics module: key, request, chain, verify, revocation, with current commands; then the
   your-stack module, which teaches from the learner's own host probe
 - M2 drift: when the core's nightly index changes a cited section, the lessons that cite it are

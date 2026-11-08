@@ -68,7 +68,8 @@ you are running, and tells you when an option you remember is gone.
 ## Why
 
 The earlier public teaching module taught an end-of-life release, a chain check that passed with
-a missing intermediate, and a key match that only worked for RSA, and nobody noticed for a year.
+a missing intermediate, and a key match that only worked for RSA, and nobody noticed for a year. Its site is
+down and its repository is archived; this is where it moved.
 Material that cites a versioned source and is re-tested against the real binary cannot go stale
 quietly.
 

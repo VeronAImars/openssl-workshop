@@ -18,7 +18,7 @@ updated: 2026-11-07
 updated_by: veronaimars
 phases:
   - id: M0
-    title: Walking skeleton — one lesson, two versions, graded in CI, published, the old link redirected (design §7)
+    title: Walking skeleton — one lesson, two versions, graded in CI, published, the retired module pointing here (design §7)
     status: todo
     depends_on: []
     subphases:
@@ -53,7 +53,7 @@ phases:
             desc: "`workshop site build` renders the lesson with the output captured in CI; GitHub Pages serves it"
           - id: M0.2-d2
             done: false
-            desc: the earlier module's public link answers 301 to the new page
+            desc: the retired module's repository README points at the published page, not only at this repository
       - id: M0.3
         title: gate
         status: todo
@@ -130,7 +130,7 @@ phases:
 ## Mirror
 
 - **M0** proves the whole loop once: one lesson graded on two releases by the core's checks, a page
-  people can open, the old link pointed at it.
+  people can open, the retired module pointing at it.
 - **M1** rebuilds the earlier module's path with commands that are right today, then teaches the stack
   the learner actually has.
 - **M2** is the reason the project exists: when OpenSSL changes a page, the lessons that cite it

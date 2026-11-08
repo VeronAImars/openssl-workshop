@@ -12,7 +12,7 @@
 
 The maintainer's 2025 module for cybersecurity students (archived) taught OpenSSL 1.1.1 (end of life
 2023-09-11), a chain check that passes with a missing intermediate, and an RSA-only key match, behind a fake
-terminal. Its link is still circulating. The OpenSSL project asked the maintainer to pursue teaching material
+terminal. Its site was taken down in 2026-11 and its repository, archived, points here. The OpenSSL project asked the maintainer to pursue teaching material
 built on the current manuals. Verified facts about the manuals and their rate of change: core design §1.
 
 The gap this closes is the one between what is taught and what operators meet: a learner is told "run
@@ -108,8 +108,8 @@ the manuals.
 
 ## 7. Build roadmap as slices
 
-- **M0** one lesson graded on two releases through the core; its page on GitHub Pages; the earlier module's link
-  redirected (301).
+- **M0** one lesson graded on two releases through the core; its page on GitHub Pages; the retired module's
+  repository pointing at the page.
 - **M1** the `pki-basics` module, five lessons.
 - **M2** drift: nightly re-run of lessons that cite a changed section; one issue per failure.
 - **M3** the generator: `lesson draft <page>` opens a pull request a person confirms.
@@ -123,7 +123,7 @@ the manuals.
 |---|---|---|
 | A lesson passes on one release and fails on another | ✅ the chain-check case (core §8) | every lesson lists versions; CI runs each; the page shows each |
 | Learners have no container runtime | ⚠️ inferred for students on managed laptops | the site shows captured output for reading; M5 removes the need |
-| The old link's host is unknown, so the redirect cannot be set | ✅ archived repo has `netlify.toml`, no homepage | track in issue #2; one-file `_redirects` signpost if the host is Netlify, DNS if a custom domain |
+| People still hold the old module's URL | ✅ the site answers 404 since 2026-11-08 | the retired repository's README names this project; the page, once it exists, is what that README links |
 | Generated lessons are fluent and wrong | ⬜ M3 measures the confirm-rate | a draft is a pull request; the checks must pass before a person reads it; nothing publishes on its own |
 
 ## 9. Verification
@@ -131,7 +131,6 @@ the manuals.
 ```sh
 workshop lesson check lessons/pki-basics/03-chain --version 3.5 --version 4.1   # exit 0; remove -untrusted → non-zero, cites the section
 workshop site build && test -f site/out/pki-basics/03-chain/index.html
-curl -sI <old module URL> | grep -i '^location: https://<pages url>/'          # 301 in place
 hack/acceptance/m0.sh
 ```
 
