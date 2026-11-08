@@ -50,6 +50,21 @@ leaf.pem: OK
 The grader read the files you made and ran the real `openssl` on them. The explanation quotes the manual
 for the release you chose.
 
+## Completion that knows your release (mockup of the M4 shell tutor)
+
+```text
+sandbox$ openssl req -new -key leaf.key -<TAB>
+ -subj <arg>          Set or modify the subject of the request          openssl-req(1) OPTIONS
+ -addext <ext>        Additional extension, key=value                    openssl-req(1) OPTIONS
+ -not_before <date>   Validity start                                     new in 4.0
+ -not_after <date>    Validity end                                       new in 4.0
+ -x509                Output a certificate instead of a request          openssl-req(1) OPTIONS
+ -keygen_engine <id>  not in 4.1.0: removed with ENGINE support          last seen in 3.x
+```
+
+The shell completes `openssl` itself, with one line per option taken from the manual for the release
+you are running, and tells you when an option you remember is gone.
+
 ## Why
 
 The earlier public teaching module taught an end-of-life release, a chain check that passed with

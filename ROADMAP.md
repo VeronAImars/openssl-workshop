@@ -20,8 +20,9 @@ it and publishes it.
 
 - M3 the generator: `workshop lesson draft <command>` drafts a lesson from the manual section and
   its EXAMPLES block; a person confirms before it is published
-- M4 the shell tutor: `workshop ask` reads `openssl version`, answers from that release's index and
-  prints the section it used; it never grades
+- M4 the shell tutor: completion for `openssl` itself, one line per option from the manual for the
+  installed release, with options that no longer exist flagged; and `workshop ask`, which answers from
+  that release's index and prints the section it used; it never grades
 
 ## v0.3 — more rooms
 
