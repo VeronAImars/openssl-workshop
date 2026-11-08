@@ -1,0 +1,23 @@
+id: pki-basics/03-chain
+versions: ["3.5", "4.1"]
+cites:
+  - page: openssl-verify
+    section: OPTIONS
+    option: -untrusted
+  - page: openssl-verify
+    section: OPTIONS
+    option: -CAfile
+goal: verify a leaf certificate against the root while supplying the intermediate separately, the way a client that only trusts the root would
+setup:
+  - openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout root.key -out root.pem -subj /CN=Root -days 30 -addext basicConstraints=critical,CA:TRUE -addext keyUsage=critical,keyCertSign
+  - openssl req -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout int.key -out int.csr -subj /CN=Intermediate
+  - printf 'basicConstraints=critical,CA:TRUE\nkeyUsage=critical,keyCertSign\n' > ca.ext
+  - openssl x509 -req -in int.csr -CA root.pem -CAkey root.key -out int.pem -days 30 -extfile ca.ext
+  - openssl req -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout leaf.key -out leaf.csr -subj /CN=leaf.test
+  - openssl x509 -req -in leaf.csr -CA int.pem -CAkey int.key -out leaf.pem -days 30
+checks:
+  - run: openssl verify -CAfile root.pem -untrusted int.pem leaf.pem
+    expect: "leaf.pem: OK"
+  - run: openssl verify -CAfile root.pem leaf.pem
+    expect_fail: true
+    why: a server that forgets to send its intermediate fails exactly like this; a check that trusts the whole chain file would hide it
